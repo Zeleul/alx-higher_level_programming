@@ -1,21 +1,41 @@
 #!/usr/bin/python3
-if __name__ == "__main__":
-    import sys
-    from calculator_1 import add, sub, mul, div
-    args = sys.argv
-    if len(args) != 4:
+from calculator_1 import add, sub, mul, div
+from sys import argv
+
+
+def main():
+    i = 0
+    if (len(argv) - 1) < 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        sys.exit(1)
-    if args[2] != '+' and args[2] != '-' and args[2] != '*' and args[2] != '/':
+        print(len(argv[:1]))
+    elif (argv[2] == '+'):
+        arg1 = argv[i + 1]
+        a = int(arg1)
+        arg2 = argv[i + 3]
+        b = int(arg2)
+        print(a, "+", b, "=", add(a, b))
+    elif (argv[2] == '-'):
+        arg1 = argv[i + 1]
+        a = int(arg1)
+        arg2 = argv[i + 3]
+        b = int(arg2)
+        print(a, "-", b, "=", sub(a, b))
+    elif (argv[2] == "*"):
+        arg1 = argv[i + 1]
+        a = int(arg1)
+        arg2 = argv[i + 3]
+        b = int(arg2)
+        print(a, "*", b, "=", mul(a, b))
+    elif (argv[2] == '/'):
+        arg1 = argv[i + 1]
+        a = int(arg1)
+        arg2 = argv[i + 3]
+        b = int(arg2)
+        print(a, "/", b, "=", div(a, b))
+    else:
         print("Unknown operator. Available operators: +, -, * and /")
-        exit(1)
-    a = int(args[1])
-    b = int(args[3])
-    if args[2] == '+':
-        print("{} {} {} = {}".format(a, args[2], b, add(a, b)))
-    elif args[2] == '-':
-        print("{} {} {} = {}".format(a, args[2], b, sub(a, b)))
-    elif args[2] == '*':
-        print("{} {} {} = {}".format(a, args[2], b, mul(a, b)))
-    elif args[2] == '/':
-        print("{} {} {} = {}".format(a, args[2], b, div(a, b)))
+        print(len(argv[:1]))
+
+
+if __name__ == "__main__":
+    main()
