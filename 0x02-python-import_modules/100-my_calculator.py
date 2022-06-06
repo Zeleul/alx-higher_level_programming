@@ -1,41 +1,18 @@
 #!/usr/bin/python3
-from calculator_1 import add, sub, mul, div
-from sys import argv
-
-
-def main():
-    i = 0
-    if (len(argv) - 1) < 3:
+if __name__ == "__main__":
+    from sys import argv
+    if len(argv) != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        print(len(argv[:1]))
-    elif (argv[2] == '+'):
-        arg1 = argv[i + 1]
-        a = int(arg1)
-        arg2 = argv[i + 3]
-        b = int(arg2)
-        print(a, "+", b, "=", add(a, b))
-    elif (argv[2] == '-'):
-        arg1 = argv[i + 1]
-        a = int(arg1)
-        arg2 = argv[i + 3]
-        b = int(arg2)
-        print(a, "-", b, "=", sub(a, b))
-    elif (argv[2] == "*"):
-        arg1 = argv[i + 1]
-        a = int(arg1)
-        arg2 = argv[i + 3]
-        b = int(arg2)
-        print(a, "*", b, "=", mul(a, b))
-    elif (argv[2] == '/'):
-        arg1 = argv[i + 1]
-        a = int(arg1)
-        arg2 = argv[i + 3]
-        b = int(arg2)
-        print(a, "/", b, "=", div(a, b))
+        quit(1)
+    a = int(argv[1])
+    b = int(argv[3])
+    ops = ["+", "-", "*", "/"]
+    from calculator_1 import add, sub, mul, div
+    funcs = [add, sub, mul, div]
+    for i, s in enumerate(ops):
+        if argv[2] == s:
+            print("{} {} {} = {}".format(a, s, b, funcs[i](a, b)))
+            break
     else:
         print("Unknown operator. Available operators: +, -, * and /")
-        print(len(argv[:1]))
-
-
-if __name__ == "__main__":
-    main()
+        quit(1)
